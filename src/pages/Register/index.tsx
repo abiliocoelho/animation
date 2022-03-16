@@ -7,10 +7,8 @@ import {
   StyleSheet,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-import { useNavigation } from "@react-navigation/native";
 
-export function SignIn() {
-  const navigation = useNavigation();
+export function Register() {
   return (
     <SafeAreaView style={styles.container}>
       <Animatable.View
@@ -18,10 +16,17 @@ export function SignIn() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Bem vindo(a)</Text>
+        <Text style={styles.message}>Registre-se</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+        <Text style={styles.title}>Nome</Text>
+        <TextInput
+          placeholder="Digite seu nome"
+          keyboardType="default"
+          autoCapitalize="words"
+          style={styles.input}
+        />
         <Text style={styles.title}>E-mail</Text>
         <TextInput
           placeholder="Digite um email"
@@ -35,15 +40,7 @@ export function SignIn() {
           secureTextEntry
         />
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Acessar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonRegister}
-          onPress={() => navigation.navigate("register")}
-        >
-          <Text style={styles.buttonRegisterText}>
-            Não possui uma conta? Cadastre-se
-          </Text>
+          <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
       </Animatable.View>
     </SafeAreaView>
