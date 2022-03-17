@@ -1,16 +1,17 @@
 import {
-  SafeAreaView,
   View,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
   StyleSheet,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-
+import { theme } from "../../styles/theme";
 export function Register() {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Animatable.View
         animation="fadeInLeft"
         delay={500}
@@ -18,39 +19,40 @@ export function Register() {
       >
         <Text style={styles.message}>Registre-se</Text>
       </Animatable.View>
-
-      <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.title}>Nome</Text>
-        <TextInput
-          placeholder="Digite seu nome"
-          keyboardType="default"
-          autoCapitalize="words"
-          style={styles.input}
-        />
-        <Text style={styles.title}>E-mail</Text>
-        <TextInput
-          placeholder="Digite um email"
-          keyboardType="email-address"
-          style={styles.input}
-        />
-        <Text style={styles.title}>Senha</Text>
-        <TextInput
-          placeholder="Sua senha"
-          style={styles.input}
-          secureTextEntry
-        />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Cadastrar</Text>
-        </TouchableOpacity>
-      </Animatable.View>
-    </SafeAreaView>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+          <Text style={styles.title}>Nome</Text>
+          <TextInput
+            placeholder="Digite seu nome"
+            keyboardType="default"
+            autoCapitalize="words"
+            style={styles.input}
+          />
+          <Text style={styles.title}>E-mail</Text>
+          <TextInput
+            placeholder="Digite um email"
+            keyboardType="email-address"
+            style={styles.input}
+          />
+          <Text style={styles.title}>Senha</Text>
+          <TextInput
+            placeholder="Sua senha"
+            style={styles.input}
+            secureTextEntry
+          />
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Registrar</Text>
+          </TouchableOpacity>
+        </Animatable.View>
+      </TouchableWithoutFeedback>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#38a69d",
+    backgroundColor: theme.colors.background,
   },
   containerHeader: {
     marginTop: "14%",
@@ -60,11 +62,11 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#fff",
+    color: theme.colors.white,
   },
   containerForm: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: theme.colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingStart: "5%",
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#38a69d",
+    backgroundColor: theme.colors.background,
     width: "100%",
     borderRadius: 4,
     paddingVertical: 8,
@@ -90,15 +92,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
-    color: "#fff",
+    color: theme.colors.white,
     fontSize: 18,
     fontWeight: "bold",
-  },
-  buttonRegister: {
-    marginTop: 14,
-    alignSelf: "center",
-  },
-  buttonRegisterText: {
-    color: "#a1a1a1",
   },
 });

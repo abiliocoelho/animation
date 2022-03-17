@@ -1,18 +1,18 @@
 import {
-  SafeAreaView,
   View,
   Text,
-  Image,
+  KeyboardAvoidingView,
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
+import { theme } from "../../styles/theme";
 
 export function Welcome() {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.containerLogo}>
         <Animatable.Image
           animation="flipInY"
@@ -39,24 +39,24 @@ export function Welcome() {
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
       </Animatable.View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#38a69d",
+    backgroundColor: theme.colors.background,
   },
   containerLogo: {
     flex: 2,
-    backgroundColor: "#38a69d",
+    backgroundColor: theme.colors.background,
     justifyContent: "center",
     alignItems: "center",
   },
   containerForm: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: theme.colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingStart: "5%",
@@ -69,11 +69,11 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   text: {
-    color: "#a1a1a1",
+    color: theme.colors.gray,
   },
   button: {
     position: "absolute",
-    backgroundColor: "#38a69d",
+    backgroundColor: theme.colors.background,
     borderRadius: 50,
     paddingVertical: 8,
     width: "60%",
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: "#fff",
+    color: theme.colors.white,
     fontWeight: "bold",
   },
 });
